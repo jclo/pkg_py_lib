@@ -9,7 +9,7 @@
 # @author       <author_name>
 # @since        0.0.0
 # @version      0.0.0
-# @template     pkg_pylib @@version@@
+# @template     pkg_pylib v@@version@@
 # @licence      @@license@@
 # ******************************************************************************
 from setuptools import setup, find_packages

@@ -22,13 +22,22 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+# Version of the template.
+VERSION='0.0.0'
+
 # Global variables, default values
+# (could be changed)
 TOPLEVEL='mycompany'
 PKGNAME='mylib'
 COPYRIGHT="Copyright (c) 2019 John Doe <contact@doe.com>"
-LICENSE="MIT. ${COPYRIGHT}"
-SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+LICENSE="MIT"
+AUTHOR='John Doe'
+EMAILAUT='contact@doe.com'
+LICOP="${LICENSE}. ${COPYRIGHT}"
 VERSION='0.0.0'
+
+# (must not be changed)
+SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 
 # --- Private Functions --------------------------------------------------------
@@ -39,6 +48,12 @@ VERSION='0.0.0'
 function help() {
   echo ''
     echo 'Usage: -t <top level namespace> -n <name of the package>'
+    echo ''
+    echo '-t  top level namespace. Default is mycompany,'
+    echo '-n  the name of the package. Default is mylib,'
+    echo '-c  the copyright. Default is Copyright (c) 2019 John Doe <contact@doe.com>,'
+    echo '-a  the author. Default is John Doe,'
+    echo '-e  the email address of the author. Default is contact@doe.com,'
     echo ''
 }
 
@@ -53,7 +68,7 @@ function isFolderEmpty() {
     ((LIST+=1))
   done
 
-  if [ ${LIST} -ne 1 ]
+  if [[ ${LIST} -gt 1 ]]
     then
       echo 'Your folder is not empty! Process aborted ...'
       exit 1
@@ -100,6 +115,9 @@ function createpkg() {
 #   arg2 (string): the name of the package
 #   arg3 (string): the source path
 #   arg4 (string): the license string
+#   arg5 (string): the version of the template
+#   arg6 (string): the name of the author
+#   arg7 (string): the email address of the author
 #
 function cpsetupy() {
   toplevel=$1
@@ -107,11 +125,15 @@ function cpsetupy() {
   src=$3
   license=$4
   version=$5
+  author=$6
+  email=$7
 
   sed -e 's/@@license@@/'"${license}"'/' \
       -e 's/mobilabs/'"${toplevel}"'/' \
       -e 's/py_lib/'"${pkgname}"'/' \
-      -e 's/@@version@@/'"${version}"'/' ${src}/setup.py > ./setup.py
+      -e 's/@@version@@/'"${version}"'/' \
+      -e 's/<author_name>/'"${author}"'/' \
+      -e 's/<author_email>/'"${email}"'/' ${src}/setup.py > ./setup.py
 }
 
 
@@ -123,17 +145,20 @@ function cpsetupy() {
 #   arg2 (string): the name of the package
 #   arg3 (string): the source path
 #   arg4 (string): the license string
+#   arg5 (string): the name of the author
 #
 function cpscript() {
   toplevel=$1
   pkgname=$2
   src=$3
   license=$4
+  author=$5
 
   mkdir -p bin
   sed -e 's/@@license@@/'"${license}"'/' \
       -e 's/mobilabs/'"${toplevel}"'/' \
-      -e 's/py_lib/'"${pkgname}"'/' ${src}/bin/py_lib > ./bin/${pkgname}
+      -e 's/py_lib/'"${pkgname}"'/' \
+      -e 's/<author_name>/'"${author}"'/' ${src}/bin/py_lib > ./bin/${pkgname}
 }
 
 
@@ -145,17 +170,20 @@ function cpscript() {
 #   arg2 (string): the name of the package
 #   arg3 (string): the source path
 #   arg4 (string): the license string
+#   arg5 (string): the name of the author
 #
 function cptests() {
   toplevel=$1
   pkgname=$2
   src=$3
   license=$4
+  author=$5
 
   mkdir -p tests
   sed -e 's/@@license@@/'"${license}"'/' \
       -e 's/mobilabs/'"${toplevel}"'/' \
-      -e 's/py_lib/'"${pkgname}"'/' ${src}/tests/test_1.py > ./tests/test_1.py
+      -e 's/py_lib/'"${pkgname}"'/' \
+      -e 's/<author_name>/'"${author}"'/' ${src}/tests/test_1.py > ./tests/test_1.py
 }
 
 
@@ -167,12 +195,14 @@ function cptests() {
 #   arg2 (string): the name of the package
 #   arg3 (string): the source path
 #   arg4 (string): the license string
+#   arg5 (string): the name of the author
 #
 function createpym() {
   toplevel=$1
   pkgname=$2
   src=$3
   license=$4
+  author=$5
 
   # Create the top level folder:
   mkdir -p ${toplevel}
@@ -182,10 +212,12 @@ function createpym() {
   mkdir -p ${toplevel}/${pkgname}
 
   sed -e 's/@@license@@/'"${license}"'/' \
+      -e 's/<author_name>/'"${author}"'/' \
       -e 's/mobilabs.py_lib/'"${toplevel}.${pkgname}"'/' \
       ${src}/mobilabs/py_lib/__init__.py > ./${toplevel}/${pkgname}/__init__.py
 
   sed -e 's/@@license@@/'"${license}"'/' \
+      -e 's/<author_name>/'"${author}"'/' \
       -e 's/mobilabs/'"${toplevel}"'/' \
       -e 's/py_lib/'"${pkgname}"'/' \
       ${src}/mobilabs/py_lib/main.py > ./${toplevel}/${pkgname}/main.py
@@ -196,6 +228,7 @@ function createpym() {
 
   touch ${toplevel}/${pkgname}/util/__init__.py
   sed -e 's/@@license@@/'"${license}"'/' \
+      -e 's/<author_name>/'"${author}"'/' \
       -e 's/mobilabs.py_lib/'"${toplevel}.${pkgname}"'/' \
       ${src}/mobilabs/py_lib/util/main.py > ./${toplevel}/${pkgname}/util/main.py
 }
@@ -205,7 +238,7 @@ function createpym() {
 # --- Main program -------------------------------------------------------------
 
 # Collect the passed in options:
-while getopts "ht:n:" opt; do
+while getopts "ht:n:c:a:e:" opt; do
   case ${opt} in
 
     h ) help
@@ -216,6 +249,16 @@ while getopts "ht:n:" opt; do
         ;;
 
     n ) PKGNAME=$(echo ${OPTARG} | tr '[:upper:]' '[:lower:]')
+        ;;
+
+    c ) COPYRIGHT=${OPTARG}
+        LICOP="${LICENSE}. ${COPYRIGHT}"
+        ;;
+
+    a ) AUTHOR=${OPTARG}
+        ;;
+
+    e ) EMAILAUT=${OPTARG}
         ;;
 
     : ) echo "Option -$OPTARG requires an argument" >&2
@@ -238,14 +281,22 @@ fi
 isFolderEmpty
 
 # Create the package and copy the skeleton:
-createpkg ${TOPLEVEL} ${PKGNAME} ${SRC} "${COPYRIGHT}"
-cpsetupy ${TOPLEVEL} ${PKGNAME} ${SRC} "${LICENSE}" ${VERSION}
+echo 'Create the project skeleton ...'
+createpkg ${TOPLEVEL} ${PKGNAME} ${SRC} "${LICOP}"
+cpsetupy ${TOPLEVEL} ${PKGNAME} ${SRC} "${LICOP}" ${VERSION} "${AUTHOR}" "${EMAILAUT}"
 
 # Copy script and test files:
-cpscript ${TOPLEVEL} ${PKGNAME} ${SRC} "${LICENSE}"
-cptests ${TOPLEVEL} ${PKGNAME} ${SRC} "${LICENSE}"
+echo 'Copy the scripts ...'
+cpscript ${TOPLEVEL} ${PKGNAME} ${SRC} "${LICOP}" "${AUTHOR}"
+echo 'Copy the test files ...'
+cptests ${TOPLEVEL} ${PKGNAME} ${SRC} "${LICOP}" "${AUTHOR}"
 
 # Create the Python module:
-createpym ${TOPLEVEL} ${PKGNAME} ${SRC} "${LICENSE}"
+echo "Create the Python package ${TOPLEVEL}.${PKGNAME} ..."
+createpym ${TOPLEVEL} ${PKGNAME} ${SRC} "${LICOP}" "${AUTHOR}"
 
+echo 'Done!'
+echo ''
+echo 'Read the file README_BUILD_TEST.md to understand how to build and test the created Python package.'
+echo ''
 # end
