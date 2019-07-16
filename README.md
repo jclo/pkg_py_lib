@@ -13,7 +13,7 @@ namespace, you should refer here:
 
 ## How to create it
 
-You have to create a project folder, clone `pkg_py_lib` in this folder and then run the script `createpkg.sh`.
+You have to create a project folder, clone `pkg_py_lib` in that folder and then run the script `createpkg.sh`.
 
 Type the following commands in a shell terminal:
 
@@ -24,7 +24,7 @@ git clone https://github.com/jclo/pkg_py_lib.git
 ./pkg_py_lib/createpkg -t <top_level_namespace> -n <name_of_your_package>
 ```
 
-The script `createpkg` populates your project folder. You can then delete the folder `pkg_py_lib`.
+The script `createpkg` populates your project folder. Once populated, you can safely delete the folder `pkg_py_lib`.
 
 
 ## Structure

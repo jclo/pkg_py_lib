@@ -32,9 +32,8 @@ PKGNAME='mylib'
 COPYRIGHT="Copyright (c) 2019 John Doe <contact@doe.com>"
 LICENSE="MIT"
 AUTHOR='John Doe'
-EMAILAUT='contact@doe.com'
+AUTHOR_EMAIL='contact@doe.com'
 LICOP="${LICENSE}. ${COPYRIGHT}"
-VERSION='0.0.0'
 
 # (must not be changed)
 SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -258,7 +257,7 @@ while getopts "ht:n:c:a:e:" opt; do
     a ) AUTHOR=${OPTARG}
         ;;
 
-    e ) EMAILAUT=${OPTARG}
+    e ) AUTHOR_EMAIL=${OPTARG}
         ;;
 
     : ) echo "Option -$OPTARG requires an argument" >&2
@@ -283,7 +282,7 @@ isFolderEmpty
 # Create the package and copy the skeleton:
 echo 'Create the project skeleton ...'
 createpkg ${TOPLEVEL} ${PKGNAME} ${SRC} "${LICOP}"
-cpsetupy ${TOPLEVEL} ${PKGNAME} ${SRC} "${LICOP}" ${VERSION} "${AUTHOR}" "${EMAILAUT}"
+cpsetupy ${TOPLEVEL} ${PKGNAME} ${SRC} "${LICOP}" ${VERSION} "${AUTHOR}" "${AUTHOR_EMAIL}"
 
 # Copy script and test files:
 echo 'Copy the scripts ...'
@@ -299,4 +298,5 @@ echo 'Done!'
 echo ''
 echo 'Read the file README_BUILD_TEST.md to understand how to build and test the created Python package.'
 echo ''
+
 # end
