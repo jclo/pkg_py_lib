@@ -5,4 +5,4 @@
   * Initial build,
   * Completed the build script,
   * Fixed a few typos,
-  * ...,
+  * Release.
