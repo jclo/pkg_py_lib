@@ -3,7 +3,7 @@
 ### 0.0.1 (August 17, 2019)
 
   * Updated the doc to comply with `pydocstring`,
-  * ...,
+  * Release.
 
 
 ### 0.0.0 (July 16, 2019)
