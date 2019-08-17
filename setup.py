@@ -1,26 +1,30 @@
 # ******************************************************************************
-# Short description
-#
-# Long description ...
-#
-# ???
-#
-# @namespace    mobilabs.py_lib
-# @author       <author_name>
-# @since        0.0.0
-# @version      0.0.0
-# @template     pkg_pylib v@@version@@
-# @licence      @@license@@
+"""
+Short description.
+
+Long description ...
+
+???
+
+@namespace      mobilabs.py_lib
+@author         <author_name>
+@since          0.0.0
+@version        0.0.0
+@template       pkg_pylib v@@version@@
+@licence        @@license@@
+"""
 # ******************************************************************************
 from setuptools import setup, find_packages
 
 
 def readme():
+    """Return the Readme file."""
     with open('README.md') as f:
         return f.read()
 
 
 def license():
+    """Return the License file."""
     with open('LICENSE.md') as f:
         return f.read()
 

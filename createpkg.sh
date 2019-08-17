@@ -22,21 +22,19 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Version of the template.
-VERSION='0.0.0'
-
-# Global variables, default values
-# (could be changed)
-TOPLEVEL='mycompany'
-PKGNAME='mylib'
-COPYRIGHT="Copyright (c) 2019 John Doe <contact@doe.com>"
-LICENSE="MIT"
-AUTHOR='John Doe'
-AUTHOR_EMAIL='contact@doe.com'
-LICOP="${LICENSE}. ${COPYRIGHT}"
-
 # (must not be changed)
 SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+# Get the global variables from 'config.sh' file
+# These global variables are:
+#  TOPLEVEL='...'
+#  PKGNAME='...'
+#  COPYRIGHT="..."
+#  LICENSE="..."
+#  AUTHOR='...'
+#  AUTHOR_EMAIL='...'
+source ${SRC}/config.sh
+LICOP="${LICENSE}. ${COPYRIGHT}"
 
 
 # --- Private Functions --------------------------------------------------------
