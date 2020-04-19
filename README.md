@@ -35,10 +35,10 @@ Now, `<your_project_folder>` contains:
 <your_project_folder>
   |
   |_ bin
-  |   |_ <script>           # Python, Bash or else scripts running in a shell,
+  |   |_ <script>               # Python, Bash or else scripts running in a shell,
   |
   |_ <top_level_namespace>
-  |   |_ __init__.py        # do not modify this file,
+  |   |_ __init__.py            # do not modify this file,
   |   |_ <name_of_your_package>
   |       |_ util
   |       |   |_ __init__.py    # an empty __init__.py file,
@@ -47,20 +47,20 @@ Now, `<your_project_folder>` contains:
   |       |_ main.py            # the entry point of your package,
   |
   |_ tests
-  |   |_ test_1.py          # an unitary test program,
+  |   |_ test_1.py              # an unitary test program,
   |
-  |_ .gitignore             # files to exclude from git,
-  |_ add_venv.sh            # a script to create a Virtual Environment,
-  |_ cleanup.sh             # a script to remove *.pyc, __py_cache__ and build
-  |                         # directories,
+  |_ .gitignore                 # files to exclude from git,
+  |_ add_venv.sh                # a script to create a Virtual Environment,
+  |_ cleanup.sh                 # a script to remove *.pyc, __py_cache__ and
+  |                             # build directories,
   |
-  |_ CHANGELOG.md           # an empty changelog file,
-  |_ LICENCE.md             # the license of your package (default MIT),
-  |_ MANIFEST.in            # the manifest template,
-  |_ README_BUILD_TEST.md   # a README describing how to create a Virtual
-  |                         # environment, build and test your package,
-  |_ README.md              # your README file,
-  |_ setup.py               # the default setup.py file,  
+  |_ CHANGELOG.md               # an empty changelog file,
+  |_ LICENCE.md                 # the license of your package (default MIT),
+  |_ MANIFEST.in                # the manifest template,
+  |_ README_BUILD_TEST.md       # a README describing how to create a Virtual
+  |                             # environment, build and test your package,
+  |_ README.md                  # your README file,
+  |_ setup.py                   # the default setup.py file,  
 
 ```
 

@@ -2,7 +2,7 @@
 #
 # A bash script to create a Python package with a top level namespace.
 #
-# copyright 2019 Artelsys <contact@artelsys.com> (http://www.artelsys.com/)
+# copyright 2020 Artelsys <contact@artelsys.com> (http://www.artelsys.com/)
 #
 #
 # Redistribution and use of this script, with or without modification, is

@@ -1,5 +1,12 @@
 ### HEAD
 
+### 0.0.2 (April 19, 2020)
+
+  * Updated the copyright date,
+  * Made a few small improvements,
+  * ...,
+
+
 ### 0.0.1 (August 17, 2019)
 
   * Updated the doc to comply with `pydocstring`,
