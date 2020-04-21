@@ -90,6 +90,9 @@ function createpkg() {
 
   # Fill it:
   cp ${src}/src/README.md .
+  cp ${src}/src/README_JUPYTER.md .
+  mkdir -p img
+  cp ${src}/src/img/kernel.png ./img/.
   cp ${src}/src/README_BUILD_TEST.md .
   cp ${src}/MANIFEST.in .
   sed 's/@@copyright@@/'"${copyright}"'/' ${src}/src/LICENSE.md > ./LICENSE.md

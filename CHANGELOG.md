@@ -5,6 +5,7 @@
   * Updated the copyright date,
   * Made a few small improvements,
   * Added a README explaining how to install and setup Jupyter for the project,
+  * Updated createpkg.sh script,
   * ...,
 
 
