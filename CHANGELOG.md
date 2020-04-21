@@ -1,9 +1,10 @@
 ### HEAD
 
-### 0.0.2 (April 19, 2020)
+### 0.0.2 (April 21, 2020)
 
   * Updated the copyright date,
   * Made a few small improvements,
+  * Added a README explaining how to install and setup Jupyter for the project,
   * ...,
 
 
