@@ -2,6 +2,8 @@
 
 This README explains how to create a Virtual Environment to build and test your package.
 
+The script `configure.sh` does this automatically.
+
 
 ## Virtual Environment
 

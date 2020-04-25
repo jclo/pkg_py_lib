@@ -48,7 +48,7 @@ function help() {
     echo ''
     echo '-t  top level namespace. Default is mycompany,'
     echo '-n  the name of the package. Default is mylib,'
-    echo '-c  the copyright. Default is Copyright (c) 2019 John Doe <contact@doe.com>,'
+    echo '-c  the copyright. Default is Copyright (c) 2020 John Doe <contact@doe.com>,'
     echo '-a  the author. Default is John Doe,'
     echo '-e  the email address of the author. Default is contact@doe.com,'
     echo ''
@@ -100,8 +100,11 @@ function createpkg() {
 
   cp ${src}/cleanup.sh .
   chmod +x cleanup.sh
-  cp ${src}/add_venv.sh .
-  chmod +x add_venv.sh
+  cp ${src}/src/configure.sh .
+  chmod +x configure.sh
+
+  mkdir -p scripts
+  cp ${src}/src/scripts/* ./scripts/.
 
   cp ${src}/src/gitignore .gitignore
 }

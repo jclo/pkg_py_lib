@@ -2,25 +2,16 @@
 
 This README describes how to setup `Jupyter` in your virtual environment.
 
+Nota:
+The default script `configure.sh` does this automatically for you.
+
 
 ## Install Jupyter
 
-Under the root folder of your project, run the `add_venv.sh` `bash` script:
+First you need to create a virutal environment (read README_BUILD_TEST.md). Then, you can install `Jupyter` by typing:
 
 ```shell
-./add_venv.sh
-```
-
-This script creates the `.venv` folder that contains the `python` packages dedicated to your environment. Then, activate your virtual environment by typing:
-
-```shell
-source ./.venv/bin/activate
-```
-
-Then, you can install `Jupyter` by typing:
-
-```shell
-pip install --upgrade ipykernel
+pip install --upgrade jupyter ipykernel
 ```
 
 Finally, you need now to reference your virtual environment to `Jupyter` by typing:
