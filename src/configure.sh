@@ -53,7 +53,7 @@ while getopts "hv:f" opt; do
         exit 1
       ;;
 
-    t ) venv=$(echo ${OPTARG} | tr '[:upper:]' '[:lower:]')
+    v ) venv=$(echo ${OPTARG} | tr '[:upper:]' '[:lower:]')
         ;;
 
     f ) FORCE=true

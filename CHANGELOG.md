@@ -7,6 +7,7 @@
   * Added a README explaining how to install and setup Jupyter for the project,
   * Updated createpkg.sh script,
   * Added the script configure.sh,
+  * Fixed a typo in the script configure.sh,
   * ...,
 
 
