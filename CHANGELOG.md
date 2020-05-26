@@ -1,6 +1,6 @@
 ### HEAD
 
-### 0.0.2 (April 25, 2020)
+### 0.0.2 (Mai 26, 2020)
 
   * Updated the copyright date,
   * Made a few small improvements,
@@ -8,6 +8,7 @@
   * Updated createpkg.sh script,
   * Added the script configure.sh,
   * Fixed a typo in the script configure.sh,
+  * Made some changes to the doc templates,
   * ...,
 
 

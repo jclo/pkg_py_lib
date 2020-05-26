@@ -21,15 +21,15 @@ from . util.main import get
 def get_name():
     """Return a string.
 
-    Parameters:
-        arg1 (str): bla bla.
-        arg2 (str): bla bla.
+    ### Parameters:
+        param1 (str):       bla bla ...
+        param2 (str):       bla bla ...
 
-    Returns:
-        (str): Bla bla ...
+    ### Returns:
+        (str):              bla bla ...
 
     Raises:
-        IOError: bla bla.
+        IOError:            bla bla ...
 
     """
     return 'My name is py_lib' + get()

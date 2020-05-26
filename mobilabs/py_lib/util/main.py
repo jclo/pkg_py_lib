@@ -24,7 +24,7 @@ def get():
         none
 
     Returns:
-        (str): Bla bla ...
+        (str):              bla bla ...
 
     Raises:
         none
